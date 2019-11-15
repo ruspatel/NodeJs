@@ -21,10 +21,19 @@ console.log(validator.isURL("https://sdfs"))*/
 const chalk = require('chalk')
 const getNotes = require('./notes.js')
 
-const msg = getNotes()
+/*const msg = getNotes()
 console.log(msg)
 
 const greenMsg = chalk.blue.inverse.bold("Success!")
 console.log(greenMsg)
 
-console.log(process.argv[2])
+console.log(process.argv[2])*/
+
+const command = process.argv[2]
+console.log("does thsi work")
+
+if (command === 'add'){
+    console.log('Adding note!')
+}else if (command === 'remove'){
+    console.log('Removing note!')
+}
