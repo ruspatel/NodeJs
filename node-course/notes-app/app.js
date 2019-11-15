@@ -19,7 +19,10 @@ console.log(msg)
 console.log(validator.isEmail('rushil1124gmail.com'))
 console.log(validator.isURL("https://sdfs"))*/
 const chalk = require('chalk')
+const yargs = require('yargs')
+
 const getNotes = require('./notes.js')
+
 
 /*const msg = getNotes()
 console.log(msg)
@@ -37,3 +40,6 @@ if (command === 'add'){
 }else if (command === 'remove'){
     console.log('Removing note!')
 }
+//need to parse the title from the command line
+console.log(yargs.argv)
+//{ _: [ 'add' ], title: 'Things to buy', '$0': 'app.js' }
