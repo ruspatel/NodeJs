@@ -12,3 +12,15 @@ request({url: url, json : true}, (error, response) => {
     const precipChance = response.body.currently.precipProbability
     console.log("It is currently "+currentTemp+", with a "+precipChance+" chance of precipiation (snow or rain).")
 })
+
+//Geocoding: converting address to a latitude and longitude address
+//mapbox access token: pk.eyJ1IjoicnVzcGF0ZWwiLCJhIjoiY2szM2V1MWVlMHUyNDNvazNkNXhsb2JrYyJ9.UDAYGOlItoCYAyr0n3LRFA
+
+const geocode_url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/-73.989,40.733.json?access_token=pk.eyJ1IjoicnVzcGF0ZWwiLCJhIjoiY2szM2V1MWVlMHUyNDNvazNkNXhsb2JrYyJ9.UDAYGOlItoCYAyr0n3LRFA'
+
+request({url: geocode_url, json: true}, (error, response) => {
+    const latitude = response.body.features[0].center[1]
+    const longitude = response.body.features[0].center[0 ]
+    console.log("The latitude and longitude are "+longitude+", "+latitude+" .")
+}
+)
