@@ -1,6 +1,8 @@
 const request = require('request')
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
+const chalk = require('chalk')
+
 
 //api url
 //const url = 'https://api.darksky.net/forecast/bbd429de0bff23627c60f113dc9ed810/23.5880,72.3693?units=si'
@@ -39,14 +41,23 @@ const forecast = require('./utils/forecast')
 // }
 // )
 
+geoLocation = process.argv[2]
 
- geocode('Sydney, Australia', (error, data) => {
-    console.log('Error', error)
-    console.log('data', data)
-})
-
-
-forecast(-75.7088, 44.1545, (error, data) => {
-    console.log('Error', error)
-    console.log('Data', data)
-  })
+if(!geoLocation){
+    console.log(chalk.yellow('Pleae provide an address!'))
+}else{
+    geocode(geoLocation, (error, data) => {
+        if(error){
+            return console.log(error)
+        }
+        forecast(data.latitude, data.longitude, (error, forecastData) => {
+        if(error){
+            return console.log(error)
+        }
+        console.log(chalk.green(data.location))
+        console.log(chalk.green(forecastData))
+    
+        })
+    })
+}
+ 
