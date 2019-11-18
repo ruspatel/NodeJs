@@ -1,8 +1,9 @@
 const request = require('request')
 const geocode = require('./utils/geocode')
+const forecast = require('./utils/forecast')
 
 //api url
-const url = 'https://api.darksky.net/forecast/bbd429de0bff23627c60f113dc9ed810/23.5880,72.3693?units=si'
+//const url = 'https://api.darksky.net/forecast/bbd429de0bff23627c60f113dc9ed810/23.5880,72.3693?units=si'
 
 // request({url: url, json : true}, (error, response) => {
 //     //console.log(response)
@@ -39,7 +40,13 @@ const url = 'https://api.darksky.net/forecast/bbd429de0bff23627c60f113dc9ed810/2
 // )
 
 
-geocode('Sydney, Australia', (error, data) => {
+ geocode('Sydney, Australia', (error, data) => {
     console.log('Error', error)
     console.log('data', data)
 })
+
+
+forecast(-75.7088, 44.1545, (error, data) => {
+    console.log('Error', error)
+    console.log('Data', data)
+  })

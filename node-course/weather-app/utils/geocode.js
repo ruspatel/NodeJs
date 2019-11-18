@@ -19,5 +19,15 @@ const geocode = (address, callback) => {
     })
 
 }
+// geocode('Sydney, Australia', (error, data) => {
+//     console.log('Error', error)
+//     console.log('data', data)
+// })
+
+geocode('Sydney, Australia', (error, data)=>{
+    console.log(data.latitude)
+
+})
+
 
 module.exports = geocode
