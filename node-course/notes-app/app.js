@@ -1,30 +1,61 @@
-//Loading fs module using require and storing it in fs object
-//const fs = require('fs')
-//fs.writeFileSync('notes.txt', 'My name is Rushil')
-//fs.appendFileSync('notes.txt', 'message appended boss')
-
-//The ./ provides a relative path. Trying to load utils.js to node along with app.js
-//const add = require('./utils.js')
-//const name = 'Rushil'
-//Each file has its own scope, need to explicitly export
-
-//const sum = add(4, -2)
-//console.log(sum)
-
-/*const validator = require('validator')
-const getNotes = require('./notes.js')
-const msg = getNotes()
-console.log(msg)
-
-console.log(validator.isEmail('rushil1124gmail.com'))
-console.log(validator.isURL("https://sdfs"))*/
 const chalk = require('chalk')
-const getNotes = require('./notes.js')
+const yargs = require('yargs')
+const notes = require('./notes.js')
 
-const msg = getNotes()
-console.log(msg)
+//Customize yargs version
+yargs.version('1.1.0')
 
-const greenMsg = chalk.blue.inverse.bold("Success!")
-console.log(greenMsg)
+//Create add command
+yargs.command({
+    command: "add",
+    describe: "Add a new note",
+    builder: {
+        title: {
+            describe: "Note Title",
+            demandOption: true,
+            type: 'string',
+        },
+        body: {
+            describe: "Note Body",
+            demandOption: true,
+            type: "string"
+        }
+    },
+    handler: function (argv) {
+        //console.log("Title: "+ argv.title)
+        //console.log("Body: "+ argv.body)
+        notes.addNote(argv.title, argv.body)
+    }
+})
 
-console.log(process.argv[2])
+//Create remove command
+yargs.command({
+    command: "remove",
+    describe: "Remove a note",
+    handler: function () {
+        console.log("Removing a note!")
+    }
+})
+
+//Create list command
+yargs.command({
+    command: "list",
+    describe: "List the note",
+    handler: function () {
+        console.log("listing the note!")
+    }
+})
+
+//Create read command
+yargs.command({
+    command: "read",
+    describe: "Reading the note",
+    handler: function () {
+        console.log("Reading the note!")
+    }
+})
+
+//add, remove, read, list
+
+yargs.parse()
+//console.log(yargs.argv)
