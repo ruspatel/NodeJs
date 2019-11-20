@@ -1,5 +1,6 @@
 const chalk = require('chalk')
 const yargs = require('yargs')
+<<<<<<< HEAD
 const notes = require('./notes.js')
 
 //Customize yargs version
@@ -59,3 +60,28 @@ yargs.command({
 
 yargs.parse()
 //console.log(yargs.argv)
+=======
+
+const getNotes = require('./notes.js')
+
+
+/*const msg = getNotes()
+console.log(msg)
+
+const greenMsg = chalk.blue.inverse.bold("Success!")
+console.log(greenMsg)
+
+console.log(process.argv[2])*/
+
+const command = process.argv[2]
+console.log("does thsi work")
+
+if (command === 'add'){
+    console.log('Adding note!')
+}else if (command === 'remove'){
+    console.log('Removing note!')
+}
+//need to parse the title from the command line
+console.log(yargs.argv)
+//{ _: [ 'add' ], title: 'Things to buy', '$0': 'app.js' }
+>>>>>>> 3720d48... installed yargs npm module

@@ -1,11 +1,13 @@
 //express is a function
 const express = require('express')
+const 
 
 const app = express()
 
 
 app.get('', (req, res) => {
-    res.send('Hello Express!')
+    //can write html code within the function
+    res.send('<h1><b>Hello Express!</b></h1>')
 })
 
 app.get('/help', (req, res) => {
@@ -13,7 +15,7 @@ app.get('/help', (req, res) => {
 })
 
 app.get('/about', (req, res) => {
-    res.send('About!')
+    res.send('<h1>About</h1>')
 })
 
 app.get('/weather', (req, res) => {
