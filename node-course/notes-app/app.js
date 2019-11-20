@@ -35,8 +35,7 @@ yargs.command({
     describe: "Remove a note",
     handler: function () {
         console.log("Removing a note!")
-    }
-})
+    }git 
 
 //Create list command
 yargs.command({
